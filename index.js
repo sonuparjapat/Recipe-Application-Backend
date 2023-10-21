@@ -2,6 +2,8 @@ const express = require('express');
 const cors=require('cors');
 const { connection } = require('./Models/AuthenticationModel');
 const { authRouter } = require('./Controls/AuthenticationRouter');
+const { favouraterouter } = require('./Controls/FavourateRouter');
+const { auth } = require('./Middleware/auth');
 const app = express();
 const port = 3000;
 
@@ -12,7 +14,8 @@ app.get("/",(req,res)=>{
   res.status({msg:"Welcome To Database"})
 })
 
-app.use("/user",authRouter)
+app.use("/user",auth, authRouter)
+app.use("/favourate",favouraterouter)
 app.listen(port, async() => {
 try{
 await connection
