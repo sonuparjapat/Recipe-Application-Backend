@@ -6,9 +6,9 @@ const { favouraterouter } = require('./Controls/FavourateRouter');
 const { auth } = require('./Middleware/auth');
 const app = express();
 const port = 3000;
-
-app.use(express.json());
 app.use(cors())
+app.use(express.json());
+
 // Define your routes here
 app.get("/",(req,res)=>{
   res.status({msg:"Welcome To Database"})
