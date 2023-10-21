@@ -14,8 +14,8 @@ app.use(express.json());
 //   res.status(200).json({msg:"Welcome To Database"})
 // })
 
-app.use("/user",auth, authRouter)
-app.use("/favourate",favouraterouter)
+app.use("/user", authRouter)
+app.use("/favourate",auth,favouraterouter)
 app.listen(8080, async() => {
 try{
 await connection
