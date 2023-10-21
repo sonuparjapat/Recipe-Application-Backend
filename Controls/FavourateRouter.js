@@ -3,7 +3,7 @@ const { favorateModel } = require("../Models/FavourateModel")
 const favouraterouter=express.Router()
 
 favouraterouter.post("/add",async(req,res)=>{
-    const data=await favorateModel.find({id:req.body.id})
+    const data=await favorateModel.findOne({id:req.body.id})
     if(data){
         res.status(400).json({msg:"Already present In your Favourates"})
     }else{
