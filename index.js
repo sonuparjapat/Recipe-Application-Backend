@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Define your routes here
 app.get("/",(req,res)=>{
-  res.status({msg:"Welcome To Database"})
+  res.status(200).json({msg:"Welcome To Database"})
 })
 
 app.use("/user",auth, authRouter)
