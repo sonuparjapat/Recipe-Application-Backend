@@ -10,9 +10,9 @@ app.use(cors())
 app.use(express.json());
 
 // Define your routes here
-// app.get("/",(req,res)=>{
-//   res.status(200).json({msg:"Welcome To Database"})
-// })
+app.get("/",(req,res)=>{
+  res.status(200).json({msg:"Welcome To Backend"})
+})
 
 app.use("/user", authRouter)
 app.use("/favourate",auth,favouraterouter)

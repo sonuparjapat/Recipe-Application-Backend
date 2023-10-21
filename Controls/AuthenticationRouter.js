@@ -7,9 +7,9 @@ const authRouter=express.Router()
 
 authRouter.post("/register",async(req,res)=>{
     const {name,email,password}=req.body
-    console.log(email)
+    // console.log(email)
 const data=await AuthenticationModel.findOne({email})
-console.log(data)
+// console.log(data)
 if(data){
     res.status(400).json({msg:"This User Is Already Registered"})
 }else{
