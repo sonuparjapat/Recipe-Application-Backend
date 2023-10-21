@@ -3,6 +3,12 @@ const { favorateModel } = require("../Models/FavourateModel")
 const favouraterouter=express.Router()
 
 favouraterouter.post("/add",async(req,res)=>{
+    const data=await favorateModel.find({id:req.body.id})
+    if(data){
+        res.status(400).json({msg:"Already present In your Favourates"})
+    }else{
+
+  
 try{
 const data=new favorateModel(data)
 data.save()
@@ -10,7 +16,7 @@ res.status(200).json({msg:'Added To Favourates'})
 }catch(err){
     res.status(400).json({msg:"Something going wrong"})
 }
-
+}
 
 
 })

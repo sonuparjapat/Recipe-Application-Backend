@@ -10,7 +10,8 @@ const favourateSchema=mongoose.Schema({
     vegetarian:Boolean,
     veryHealthy:Boolean,
     veryPopular:Boolean,
-    userId:String
+    userId:String,
+    id:Number,
 
 })
 const favorateModel=mongoose.model("favorates",favourateSchema)
