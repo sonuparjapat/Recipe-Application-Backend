@@ -11,7 +11,7 @@ favouraterouter.post("/add",async(req,res)=>{
   
 try{
 const data=new favorateModel(data)
-data.save()
+await data.save()
 res.status(200).json({msg:'Added To Favourates'})
 }catch(err){
     res.status(400).json({msg:"Something going wrong"})
