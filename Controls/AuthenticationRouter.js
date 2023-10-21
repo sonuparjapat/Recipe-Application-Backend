@@ -7,7 +7,9 @@ const authRouter=express.Router()
 
 authRouter.post("/register",async(req,res)=>{
     const {name,email,password}=req.body
+    console.log(email)
 const data=await AuthenticationModel.findOne({email})
+console.log(data)
 if(data){
     res.status(400).json({msg:"This User Is Already Registered"})
 }else{
@@ -16,11 +18,12 @@ if(data){
  bcrypt.hash(password,5, async(err, hash)=> {
         // Store hash in your password DB.
         if(hash){
+            const data=new AuthenticationModel({email,name,password:hash})
+            await data.save()
             res.status(200).json({msg:"Registered Successfully"})
         }else{
 
-            const data=new AuthenticationModel({email,name,password:hash})
-            await data.save()
+           
             res.status(400).json({msg:"Something going wrong"})
         }
     });
