@@ -29,12 +29,17 @@ res.status(200).json({msg:data})
         res.status(400).json({msg:"Something going wrong"})
     }
 })
-favouraterouter.delete("/delete/:id",async(req,res)=>{
-    const {id}=req.params
-const data=await favorateModel.findOne({_id:id})
+favouraterouter.delete("/:recipeId",async(req,res)=>{
+    const {recipeId}=req.params
+    
+console.log(recipeId)
+
+const data=await favorateModel.findOne({_id:recipeId})
+// console.log(data)
+// res.status(200).json({msg:"hi"})
 try{
     if(data.userId==req.body.userId){
-        await favorateModel.findOneAndDelete({_id:id})
+        await favorateModel.findOneAndDelete({_id:recipeId})
         res.status(200).json({msg:"Removed from favourats"})
     }else{
         res.status(400).json({msg:"You are not authorised to do this task"})
