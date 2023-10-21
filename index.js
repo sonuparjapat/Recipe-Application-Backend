@@ -23,5 +23,5 @@ console.log("connected to mongodb")
 }catch(err){
   console.log(err)
 }
-console.log(`server is runninng `)
+console.log(`server is runninng on 8080`)
 });
