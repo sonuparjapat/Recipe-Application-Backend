@@ -5,7 +5,7 @@ const { authRouter } = require('./Controls/AuthenticationRouter');
 const { favouraterouter } = require('./Controls/FavourateRouter');
 const { auth } = require('./Middleware/auth');
 const app = express();
-const port = 3000;
+
 app.use(cors())
 app.use(express.json());
 
@@ -16,12 +16,12 @@ app.get("/",(req,res)=>{
 
 app.use("/user",auth, authRouter)
 app.use("/favourate",favouraterouter)
-app.listen(port, async() => {
+app.listen(8080, async() => {
 try{
 await connection
 console.log("connected to mongodb")
 }catch(err){
   console.log(err)
 }
-console.log(`server is runninng on port ${port}`)
+console.log(`server is runninng `)
 });
